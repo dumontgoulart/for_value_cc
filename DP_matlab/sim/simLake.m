@@ -121,7 +121,7 @@ for t = 1: H
       [ ~ , idx_q ] = min( abs( discr_q - q_sim(t+1) ) );
       
       v =interp1q( discr_s , min_rel( : , idx_q, doy ) , s(t) );
-      sys_param.simulation.vv = repmat( v, 1, length(discr_q) );
+      sys_interp1q( discr_s , max_rel( : , idx_q ) , s(t) );param.simulation.vv = repmat( v, 1, length(discr_q) );
       
       V = interp1q( discr_s , max_rel( : , idx_q ) , s(t) );
       sys_param.simulation.VV = repmat( V, 1, length(discr_q) );

@@ -63,7 +63,7 @@ for t = N: -1: 1
     H(i,t) = Bellman_ddp( H(:,t+1), discr_s(i), disturbance(t) );
   end
 end
-Hend = H(:,1);
+Hend = H(:,end);
 H = zeros(n_s, N+1); % create Bellman
 H(:,end) = Hend;     % initialize Bellman to penalty function
 for t = N: -1: 1

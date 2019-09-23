@@ -7,7 +7,7 @@
 clear all;
 clc
 
-%cd('/Users/matteo/Poli/research/myCode/GIT/ptreeopt/DP_matlab')
+cd('/Users/matteo/Poli/research/myCode/GIT/ptreeopt/DP_matlab')
 global sys_param;
 
 addpath('sim')

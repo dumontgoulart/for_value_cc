@@ -63,7 +63,7 @@ G = (max( sys_param.simulation.wt - R, 0 )).^2 ;
 
 %-- Compute cost-to-go given by Bellman function --
 % apply linear interpolation to update the Bellman value H_
-H_ = interp_lin_vector( discr_s , H_ , s_next' );
+H_ = interp1q( discr_s , H_ , s_next' );
 
 %-- Compute resolution of Bellman value function --
 Q     = G' + H_;

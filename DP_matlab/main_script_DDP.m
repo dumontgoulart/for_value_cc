@@ -5,23 +5,32 @@
 
 
 clear all;
-clc
+%clc
 
-%cd('/Users/matteo/Poli/research/myCode/GIT/ptreeopt/DP_matlab')
+cd('C:\Users\henri\Documents\Henrique\1 - POLIMI\s4\Thesis\matlab_original\DP_matlab')
 global sys_param;
 
 addpath('sim')
 addpath('DDP')
 
-%% Set general system parameters
+%% Set general system parameters - Original one 
 
-qq  = load('./data/q_inflow.txt','-ascii') ; % 01/10/1904 - 30/09/2015
-ee  = load('./data/evaporation.txt','-ascii') ; % 01/10/1904 - 30/09/2015
+qq  = load('./data/q_inflow.txt','-ascii') ; % when changing the mode, this one ought to be commented out
+%ee  = load('./data/evaporation.txt','-ascii') ; 
 w   = load('./data/demand.txt','-ascii') ;
-qe2016 = load('./data/data2016.txt','-ascii') ; % 1/10/2015 - 30/09/2016
+%qe2016 = load('./data/data2016.txt','-ascii') ; 
 
-dn = datenum(1904,10,1):datenum(2015,09,30);
-dn_sim = datenum(1995,10,1):datenum(2015,09,30); % simulation horizon 01/10/1995 - 30/09/2015
+dn = datenum(1904,10,1):datenum(2015,09,30); % when changing the mode, this one ought to be commented out
+dn_sim = datenum(1995,10,1):datenum(2015,09,30); % when changing the mode, this one ought to be commented out
+
+%% Future scenario - Uncomment this one
+
+%qq  = load('./data/inflow_17.txt','-ascii') ; % 01/10/1904 - 30/09/2015
+
+%dn = datenum(2000,1,1):datenum(2099,12,31);
+%dn_sim = datenum(2000,1,1):datenum(2019,12,31); % simulation horizon 01/10/1995 - 30/09/2015
+
+%% - rest of parameters
 id1 = find( dn == dn_sim(1) );
 id2 = find( dn == dn_sim(end) );
 qqs = qq(id1:id2);
@@ -29,10 +38,10 @@ qqs = qq(id1:id2);
 dv = datevec(dn_sim');
 feb29 = dv(:,2).*dv(:,3) == 2*29;
 q_ = qqs(~feb29) ;
-sys_param.simulation.ev = [ee(~feb29); qe2016(:,2)] ;
+%sys_param.simulation.ev = [ee(~feb29)] ;
 % remove negative value
 q_(q_<0)= eps ;
-sys_param.simulation.q = [q_; qe2016(:,1)] ;
+sys_param.simulation.q = [q_] ;
 
 % structure with system paramenters
 sys_param.simulation.s_in  = 458.6 ; % initial storage on 1/10/1995

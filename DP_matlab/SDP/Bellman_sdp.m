@@ -34,7 +34,7 @@ s_next = s_curr + delta*( qq - R );
 G = (max( sys_param.simulation.wt - R, 0 )).^2 ;
 
 %-- Compute cost-to-go given by Bellman function --
-H_ = interp_lin_vector( discr_s , H_ , s_next' );
+H_ = interp1q( discr_s , H_ , s_next(:) ) ;
 H_ = reshape( H_, n_q, n_u )         ;
 
 %-- Compute resolution of Bellman value function --

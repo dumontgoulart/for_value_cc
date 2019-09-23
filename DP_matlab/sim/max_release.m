@@ -8,8 +8,8 @@ function V = max_release(s)
 %
 % MG_update on 01/02/2017 - deadpool added for storage < 90 
 
-xs = [90, 100, 400, 600, 975] ;
-xr = cfs_to_taf([0, 35000, 40000, 115000, 130000]) ;
+xs = [0, 90, 100, 400, 600, 1000] ;
+xr = cfs_to_taf([0, 0, 35000, 40000, 115000, 115000]) ;
 
 V = interp_lin_scalar(xs, xr, s) ;
 
